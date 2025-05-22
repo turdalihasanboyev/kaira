@@ -10,6 +10,8 @@ from .models import (
     SubEmail,
     Testimonial,
     Category,
+    Blog,
+    Product,
 )
 
 
@@ -29,11 +31,10 @@ class TestimonialAdmin(admin.ModelAdmin):
     list_display = (
         'id',
         'author',
-        'testimonial',
         'created_at',
         'updated_at',
     )
-    search_fields = ('author', 'testimonial',)
+    search_fields = ('author',)
 
 
 @admin.register(Category)
@@ -46,5 +47,35 @@ class CategoryAdmin(admin.ModelAdmin):
         'created_at',
         'updated_at',
     )
-    search_fields = ('name', 'role',)
+    search_fields = ('name',)
     list_filter = ('role',)
+
+
+@admin.register(Blog)
+class BlogAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'name',
+        'category',
+        'image',
+        'created_at',
+        'updated_at',
+    )
+    search_fields = ('name',)
+
+
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'name',
+        'category',
+        'image',
+        'price',
+        'currency',
+        'display_price',
+        'created_at',
+        'updated_at',
+    )
+    search_fields = ('name',)
+    list_filter = ('currency',)

@@ -39,7 +39,25 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'django_cleanup.apps.CleanupConfig',
+    'query_counter',
 ]
+
+{
+    'DQC_SLOWEST_COUNT': 5,
+    'DQC_TABULATE_FMT': 'pretty',
+    'DQC_SLOW_THRESHOLD': 1,
+    'DQC_INDENT_SQL': True,
+    'DQC_PYGMENTS_STYLE': 'tango',
+    'DQC_PRINT_ALL_QUERIES': False,
+    'DQC_COUNT_QTY_MAP': {
+        5: 'green',
+        10: 'white',
+        20: 'yellow',
+        30: 'red',
+    },
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -49,6 +67,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'query_counter.middleware.DjangoQueryCounterMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'

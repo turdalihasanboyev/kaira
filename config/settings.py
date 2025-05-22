@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 
     'django_cleanup.apps.CleanupConfig',
     'query_counter',
+    'rest_framework',
 ]
 
 {
